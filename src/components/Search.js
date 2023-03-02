@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Search() {
+function Search({ toggleSearch }) {
+
+  const [searchInput, setSearchInput] = useState('')
+
+  const handleSearch = (e) => {
+    toggleSearch(searchInput)
+    setSearchInput(e.target.value)
+  }
+
   return (
     <div className="ui search">
       <div className="ui icon input">
-        <input className="prompt" />
+        <input onChange={handleSearch} value={searchInput} className="prompt" />
         <i className="search icon" />
       </div>
     </div>
